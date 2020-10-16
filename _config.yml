@@ -17,3 +17,5 @@ theme: jekyll-theme-midnight
 
 title: [LoolzRules's website]
 description: [Welcome to my website]
+
+permalink: /:categories/:year/:month/:day/:title/
