@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>На репите каждый день - {{ page.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+<body>
+  <div class="wrapper">
+
+    <section>
+      <div id="title">
+        <span class="credits left">Telegram-канал: <a href="https://t.me/loolzrules_channel">@loolzrules_channel</a></span>
+        <span class="credits right">{{ page.date }}</span>
+        <hr>
+      </div>
+
+      {{ content }}
+
+    </section>
+
+  </div>
+</body>
+</html>
