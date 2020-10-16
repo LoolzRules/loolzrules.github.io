@@ -1,6 +1,7 @@
 ---
 categories: channel
 layout: post
+image: /assets/shinedown.jpg
 ---
 # Ураа, пробуем новый формат постов!
 
