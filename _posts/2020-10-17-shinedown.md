@@ -11,13 +11,15 @@ image: /assets/shinedown.jpg
 подразобрался с тем как вести блог на гитхабе и вот вам результат! Конечно, он не финальный и в
 будущем я прикручу как минимум Instant View для Телеграма, а так же буду прислушиваться к вашим отзывам :)
 
-[![Группа Шайндаун](/assets/shinedown.jpg)](http://loolzrules.github.io/)
+![Группа Шайндаун](/assets/shinedown.jpg)
 
 Итак, сегодняшний пост посвящён группе Shinedown. Эти ребята играют рок,
 и играют они его довольно долго, с 2003-го года. Вот вам плейлист:
 
+Edit: самое смешное и обидное это то что все видео ниже будут работать только на ютубе, вот такой я неудачник :D
+
 ### Breaking Inside
-<iframe width="650" height="365" src="https://www.youtube-nocookie.com/embed/9Bli8yJTRd4" frameborder="0" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
+<iframe class="yt" width="650" height="365" src="http://www.youtube.com/embed/9Bli8yJTRd4" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
 <div class="badge-wrap">
 <a href="https://open.spotify.com/track/1clfqPOzkRT14PAICrlu4J" target="_blank">
 <img alt="Spotify" src="/assets/spotify.svg" class="badge">
@@ -33,7 +35,7 @@ image: /assets/shinedown.jpg
 <hr>
 
 ### Call Me
-<iframe width="650" height="365" src="https://www.youtube-nocookie.com/embed/PuDzAQriQP0" frameborder="0" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
+<iframe class="yt" width="650" height="365" src="https://www.youtube-nocookie.com/embed/PuDzAQriQP0" frameborder="0" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
 <div class="badge-wrap">
 <a href="https://open.spotify.com/track/2nBWxgSZ79w9l6t2rUg6pl?si=ngZeGraLRmCBXQkBHHl99g" target="_blank">
 <img alt="Spotify" src="/assets/spotify.svg" class="badge">
@@ -49,7 +51,7 @@ image: /assets/shinedown.jpg
 <hr>
 
 ### Bully
-<iframe width="650" height="365" src="https://www.youtube-nocookie.com/embed/Y7NVxAMQn_I" frameborder="0" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
+<iframe class="yt" width="650" height="365" src="https://www.youtube-nocookie.com/embed/Y7NVxAMQn_I" frameborder="0" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
 <div class="badge-wrap">
 <a href="https://open.spotify.com/track/0Ldlex2J63L6Dop9Pk2Rz9?si=i-2yfSYKRzWGhDQ6jS951Q" target="_blank">
 <img alt="Spotify" src="/assets/spotify.svg" class="badge">
@@ -65,7 +67,7 @@ image: /assets/shinedown.jpg
 <hr>
 
 ### What a Shame
-<iframe width="650" height="365" src="https://www.youtube-nocookie.com/embed/q4O_1MdWVo4" frameborder="0" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
+<iframe class="yt" width="650" height="365" src="https://www.youtube-nocookie.com/embed/q4O_1MdWVo4" frameborder="0" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
 <div class="badge-wrap">
 <a href="https://open.spotify.com/track/7oA2oLRylvnkJ2hTGEHfvY?si=fuszzJUhRkGrTTtAfCdOVw" target="_blank">
 <img alt="Spotify" src="/assets/spotify.svg" class="badge">
@@ -81,7 +83,7 @@ image: /assets/shinedown.jpg
 <hr>
 
 ### Sound Of Madness
-<iframe width="650" height="365" src="https://www.youtube-nocookie.com/embed/WGt-8adyabk" frameborder="0" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
+<iframe class="yt" width="650" height="365" src="https://www.youtube-nocookie.com/embed/WGt-8adyabk" frameborder="0" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
 <div class="badge-wrap">
 <a href="https://open.spotify.com/track/0W9Xvd4Qx1aZPxEi94vgRY?si=i0okL8bdRoGS2d0ng8NYmg" target="_blank">
 <img alt="Spotify" src="/assets/spotify.svg" class="badge">
