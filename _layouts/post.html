@@ -33,12 +33,7 @@ layout: compress
 
       {% capture post_photo %}/assets/images/posts/{{ page.title | slugify }}.jpg{% endcapture %}
 
-      {% capture post_photo_exists %}{% file_exists {{ post_photo }} %}{% endcapture %}
-
-      {% if post_photo_exists == "true" %}
-        <img src="{{ post_photo }}" alt="{{ page.title }}" class="cover">
-      {% endif %}
-
+      <img src="{{ post_photo }}" alt="{{ page.title }}" class="cover">
 
       {{ content }}
 
