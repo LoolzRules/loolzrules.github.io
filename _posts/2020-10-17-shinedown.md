@@ -19,79 +19,49 @@ image: /assets/shinedown.jpg
 Edit: самое смешное и обидное это то что все видео ниже будут работать только на ютубе, вот такой я неудачник :D
 
 ### Breaking Inside
-<iframe class="yt" width="650" height="365" src="https://www.youtube.com/embed/9Bli8yJTRd4" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-<div class="badge-wrap">
-<a href="https://open.spotify.com/track/1clfqPOzkRT14PAICrlu4J" target="_blank">
-<img alt="Spotify" src="/assets/spotify.svg" class="badge">
-</a>
-<a href="https://music.yandex.by/album/1084871/track/135715" target="_blank">
-<img alt="Yandex Music" src="/assets/yandex_music.svg" class="badge">
-</a>
-<a href="https://music.apple.com/us/album/breaking-inside/279812117?i=279812263" target="_blank">
-<img alt="Apple Music" src="/assets/apple_music.svg" class="badge">
-</a>
-</div>
+{% include track.html
+youtube="9Bli8yJTRd4"
+spotify="track/1clfqPOzkRT14PAICrlu4J"
+yandex="album/1084871/track/135715"
+apple="album/breaking-inside/279812117?i=279812263"
+%}
 
 <hr>
 
 ### Call Me
-<iframe class="yt" width="650" height="365" src="https://www.youtube-nocookie.com/embed/PuDzAQriQP0" frameborder="0" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
-<div class="badge-wrap">
-<a href="https://open.spotify.com/track/2nBWxgSZ79w9l6t2rUg6pl?si=ngZeGraLRmCBXQkBHHl99g" target="_blank">
-<img alt="Spotify" src="/assets/spotify.svg" class="badge">
-</a>
-<a href="https://music.yandex.by/album/1084871/track/135711" target="_blank">
-<img alt="Yandex Music" src="/assets/yandex_music.svg" class="badge">
-</a>
-<a href="https://music.apple.com/us/album/call-me/279812117?i=279812315" target="_blank">
-<img alt="Apple Music" src="/assets/apple_music.svg" class="badge">
-</a>
-</div>
+{% include track.html
+youtube="PuDzAQriQP0"
+spotify="track/2nBWxgSZ79w9l6t2rUg6pl?si=ngZeGraLRmCBXQkBHHl99g"
+yandex="album/1084871/track/135711"
+apple="album/call-me/279812117?i=279812315"
+%}
 
 <hr>
 
 ### Bully
-<iframe class="yt" width="650" height="365" src="https://www.youtube-nocookie.com/embed/Y7NVxAMQn_I" frameborder="0" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
-<div class="badge-wrap">
-<a href="https://open.spotify.com/track/0Ldlex2J63L6Dop9Pk2Rz9?si=i-2yfSYKRzWGhDQ6jS951Q" target="_blank">
-<img alt="Spotify" src="/assets/spotify.svg" class="badge">
-</a>
-<a href="https://music.yandex.by/album/435136/track/3608557" target="_blank">
-<img alt="Yandex Music" src="/assets/yandex_music.svg" class="badge">
-</a>
-<a href="https://music.apple.com/us/album/bully/499945669?i=499945671" target="_blank">
-<img alt="Apple Music" src="/assets/apple_music.svg" class="badge">
-</a>
-</div>
+{% include track.html
+youtube="Y7NVxAMQn_I"
+spotify="track/0Ldlex2J63L6Dop9Pk2Rz9?si=i-2yfSYKRzWGhDQ6jS951Q"
+yandex="album/435136/track/3608557"
+apple="album/bully/499945669?i=499945671"
+%}
 
 <hr>
 
 ### What a Shame
-<iframe class="yt" width="650" height="365" src="https://www.youtube-nocookie.com/embed/q4O_1MdWVo4" frameborder="0" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
-<div class="badge-wrap">
-<a href="https://open.spotify.com/track/7oA2oLRylvnkJ2hTGEHfvY?si=fuszzJUhRkGrTTtAfCdOVw" target="_blank">
-<img alt="Spotify" src="/assets/spotify.svg" class="badge">
-</a>
-<a href="https://music.yandex.by/album/1084871/track/135718" target="_blank">
-<img alt="Yandex Music" src="/assets/yandex_music.svg" class="badge">
-</a>
-<a href="https://music.apple.com/us/album/what-a-shame/279812117?i=279812254" target="_blank">
-<img alt="Apple Music" src="/assets/apple_music.svg" class="badge">
-</a>
-</div>
+{% include track.html
+youtube="q4O_1MdWVo4"
+spotify="track/7oA2oLRylvnkJ2hTGEHfvY?si=fuszzJUhRkGrTTtAfCdOVw"
+yandex="album/1084871/track/135718"
+apple="album/what-a-shame/279812117?i=279812254"
+%}
 
 <hr>
 
 ### Sound Of Madness
-<iframe class="yt" width="650" height="365" src="https://www.youtube-nocookie.com/embed/WGt-8adyabk" frameborder="0" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
-<div class="badge-wrap">
-<a href="https://open.spotify.com/track/0W9Xvd4Qx1aZPxEi94vgRY?si=i0okL8bdRoGS2d0ng8NYmg" target="_blank">
-<img alt="Spotify" src="/assets/spotify.svg" class="badge">
-</a>
-<a href="https://music.yandex.by/album/1084871/track/135498" target="_blank">
-<img alt="Yandex Music" src="/assets/yandex_music.svg" class="badge">
-</a>
-<a href="https://music.apple.com/us/album/sound-of-madness/279812117?i=279812223" target="_blank">
-<img alt="Apple Music" src="/assets/apple_music.svg" class="badge">
-</a>
-</div>
+{% include track.html
+youtube="WGt-8adyabk"
+spotify="track/0W9Xvd4Qx1aZPxEi94vgRY?si=i0okL8bdRoGS2d0ng8NYmg"
+yandex="album/1084871/track/135498"
+apple="album/sound-of-madness/279812117?i=279812223"
+%}

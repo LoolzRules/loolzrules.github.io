@@ -9,17 +9,19 @@
   <meta property="og:title" content="{{ page.title }}" />
   <meta property="og:image" content="{{ page.image }}" />
 
+  <link rel="icon" href="/assets/images/favicon.png">
+
 </head>
 <body>
   <div class="wrapper">
 
-    <section>
+    <section id="post">
       <div id="title">
         <span class="credits left">Telegram-канал: <a href="https://t.me/loolzrules_channel" target="_blank">@loolzrules_channel</a></span>
         <span class="credits right">{{ page.date | date: "%Y-%m-%d" }}</span>
         <br>
-        <hr>
       </div>
+      <hr>
 
       {{ content }}
 
