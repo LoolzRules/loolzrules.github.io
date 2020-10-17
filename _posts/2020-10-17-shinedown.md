@@ -1,7 +1,7 @@
 ---
 categories: channel
 layout: post
-image: /assets/shinedown.jpg
+image: /assets/images/posts/shinedown.jpg
 ---
 # Ураа, пробуем новый формат постов!
 
@@ -11,7 +11,7 @@ image: /assets/shinedown.jpg
 подразобрался с тем как вести блог на гитхабе и вот вам результат! Конечно, он не финальный и в
 будущем я прикручу как минимум Instant View для Телеграма, а так же буду прислушиваться к вашим отзывам :)
 
-![Группа Шайндаун](/assets/shinedown.jpg)
+![Группа Шайндаун](/assets/images/posts/shinedown.jpg)
 
 Итак, сегодняшний пост посвящён группе Shinedown. Эти ребята играют рок,
 и играют они его довольно долго, с 2003-го года. Вот вам плейлист:
