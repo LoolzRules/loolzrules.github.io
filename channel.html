@@ -1,0 +1,23 @@
+---
+layout: post
+title: Главная
+---
+
+<h1>Добро пожаловать!</h1>
+
+<p>
+    <strong><a href="https://t.me/{{ site.loolzrules.channel }}" target="_blank">На репите каждый день</a></strong> - это telegram-канал, посвящённый музыке.
+    Посты на канале выходят чуть больше чем раз в день, при этом каждый день посвящён одному исполнителю.
+</p>
+
+<h3>Список всех постов:</h3>
+
+<ul>
+    {% for post in site.posts %}
+        <li>
+            <a href="{{ site.url }}{{ post.url | remove: 'index.html' }}">{{ post.title }}</a>
+            ({{ post.date | date: "%Y.%m.%d" }})
+        </li>
+    {% endfor %}
+</ul>
+

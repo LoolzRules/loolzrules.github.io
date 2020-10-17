@@ -1,5 +1,6 @@
 plugins:
   - jekyll-relative-links
+  - jekyll-sitemap
 relative_links:
   enabled: true
   collections: true
@@ -25,3 +26,13 @@ compress_html:
   comments: all
   blanklines: true
   profile: false
+
+defaults:
+  -
+    scope:
+      path:            "assets/**/*"
+    values:
+      sitemap:         false
+
+loolzrules:
+  channel: loolzrules_channel

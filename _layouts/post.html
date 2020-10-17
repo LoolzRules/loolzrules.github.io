@@ -1,6 +1,5 @@
 ---
 layout: compress
-telegram_channel: loolzrules_channel
 ---
 
 <!doctype html>
@@ -13,7 +12,7 @@ telegram_channel: loolzrules_channel
 
   <meta property="og:title" content="На репите каждый день - {{ page.title }}" />
   <meta property="og:image" content="/assets/images/posts/{{ page.title | slugify }}.jpg" />
-  <meta property="telegram:channel" content="@{{ layout.telegram_channel }}" />
+  <meta property="telegram:channel" content="@{{ site.loolzrules.channel }}" />
 
   <link rel="icon" href="/assets/images/favicon.png">
 
@@ -25,14 +24,21 @@ telegram_channel: loolzrules_channel
       <div id="title">
         <span class="credits left">
           Telegram-канал:
-          <a href="https://t.me/{{ layout.telegram_channel }}" target="_blank">@{{ layout.telegram_channel }}</a>
+          <a href="https://t.me/{{ site.loolzrules.channel }}" target="_blank">@{{ site.loolzrules.channel }}</a>
         </span>
         <span class="credits right">{{ page.date | date: "%Y.%m.%d" }}</span>
         <br>
       </div>
       <hr>
 
-      <img src="/assets/images/posts/{{ page.title | slugify }}.jpg" alt="{{ page.title }}" class="cover">
+      {% capture post_photo %}/assets/images/posts/{{ page.title | slugify }}.jpg{% endcapture %}
+
+      {% capture post_photo_exists %}{% file_exists {{ post_photo }} %}{% endcapture %}
+
+      {% if post_photo_exists == "true" %}
+        <img src="{{ post_photo }}" alt="{{ page.title }}" class="cover">
+      {% endif %}
+
 
       {{ content }}
 
