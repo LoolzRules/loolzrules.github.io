@@ -31,9 +31,7 @@ layout: compress
       </div>
       <hr>
 
-      {% capture post_photo %}/assets/images/posts/{{ page.title | slugify }}.jpg{% endcapture %}
-
-      <img src="{{ post_photo }}" alt="{{ page.title }}" class="cover">
+      <img src="/assets/images/posts/{{ page.title | slugify }}.jpg" alt="{{ page.title }}" class="cover">
 
       {{ content }}
 
