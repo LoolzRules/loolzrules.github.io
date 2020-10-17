@@ -24,7 +24,7 @@
       </div>
       <hr>
 
-      <img src="/assets/images/posts/{{ page.title }}.jpg" alt="{{ page.title }}" class="cover">
+      <img src="/assets/images/posts/{{ page.title | slugify }}.jpg" alt="{{ page.title }}" class="cover">
 
       {{ content }}
 
