@@ -20,9 +20,8 @@ description: [Welcome to my website]
 
 permalink: /:categories/:year/:month/:day/:title/
 
-defaults:
-  -
-    scope:
-      path: ""
-    values:
-      layout: "post"
+compress_html:
+  clippings: all
+  comments: all
+  blanklines: true
+  profile: true

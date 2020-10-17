@@ -1,3 +1,8 @@
+---
+layout: compress
+telegram_channel: loolzrules_channel
+---
+
 <!doctype html>
 <html lang="ru">
 <head>
@@ -8,7 +13,7 @@
 
   <meta property="og:title" content="На репите каждый день - {{ page.title }}" />
   <meta property="og:image" content="/assets/images/posts/{{ page.title | slugify }}.jpg" />
-  <meta property="telegram:channel" content="@loolzrules_channel" />
+  <meta property="telegram:channel" content="@{{ layout.telegram_channel }}" />
 
   <link rel="icon" href="/assets/images/favicon.png">
 
@@ -18,7 +23,10 @@
 
     <section id="post">
       <div id="title">
-        <span class="credits left">Telegram-канал: <a href="https://t.me/loolzrules_channel" target="_blank">@loolzrules_channel</a></span>
+        <span class="credits left">
+          Telegram-канал:
+          <a href="https://t.me/{{ layout.telegram_channel }}" target="_blank">@{{ layout.telegram_channel }}</a>
+        </span>
         <span class="credits right">{{ page.date | date: "%Y.%m.%d" }}</span>
         <br>
       </div>
