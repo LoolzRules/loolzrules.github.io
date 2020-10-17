@@ -7,6 +7,14 @@
   margin: 0;
   padding: 0;
 
+  & > .cover {
+    margin-bottom: 24px;
+  }
+
+  & strong {
+    font-weight: bold;
+  }
+
   & > #title {
     margin: 0;
     padding: 20px 0;

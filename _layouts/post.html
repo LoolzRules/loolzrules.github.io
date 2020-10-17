@@ -6,8 +6,9 @@
   <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-  <meta property="og:title" content="{{ page.title }}" />
-  <meta property="og:image" content="{{ page.image }}" />
+  <meta property="og:title" content="На репите каждый день - {{ page.title }}" />
+  <meta property="og:image" content="/assets/images/posts/{{ page.title | slugify }}.jpg" />
+  <meta property="telegram:channel" content="@loolzrules_channel" />
 
   <link rel="icon" href="/assets/images/favicon.png">
 
@@ -18,10 +19,12 @@
     <section id="post">
       <div id="title">
         <span class="credits left">Telegram-канал: <a href="https://t.me/loolzrules_channel" target="_blank">@loolzrules_channel</a></span>
-        <span class="credits right">{{ page.date | date: "%Y-%m-%d" }}</span>
+        <span class="credits right">{{ page.date | date: "%Y.%m.%d" }}</span>
         <br>
       </div>
       <hr>
+
+      <img src="/assets/images/posts/{{ page.title }}.jpg" alt="{{ page.title }}" class="cover">
 
       {{ content }}
 
