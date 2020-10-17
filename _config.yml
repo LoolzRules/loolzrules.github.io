@@ -24,4 +24,4 @@ compress_html:
   clippings: all
   comments: all
   blanklines: true
-  profile: true
+  profile: false
