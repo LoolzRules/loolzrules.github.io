@@ -1,6 +1,7 @@
 ---
-category: channel
 layout: post
+category: channel
+image: shinedown_bonus
 ---
 # ВНЕЗАПНЫЙ бонус к сегодняшнему посту!
 

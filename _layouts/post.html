@@ -11,7 +11,9 @@ layout: compress
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
   <meta property="og:title" content="На репите каждый день - {{ page.title }}" />
-  <meta property="og:image" content="/assets/images/posts/{{ page.title | slugify }}.jpg" />
+  {% if page.image %}
+    <meta property="og:image" content="/assets/images/posts/{{ page.image }}.jpg" />
+  {% endif %}
   <meta property="telegram:channel" content="@{{ site.loolzrules.channel }}" />
 
   <link rel="icon" href="/assets/images/favicon.png">
@@ -31,7 +33,9 @@ layout: compress
       </div>
       <hr>
 
-      <img src="/assets/images/posts/{{ page.title | slugify }}.jpg" alt="{{ page.title }}" class="cover">
+      {% if page.image %}
+        <img src="/assets/images/posts/{{ page.image }}.jpg" alt="{{ page.title }}" class="cover">
+      {% endif %}
 
       {{ content }}
 

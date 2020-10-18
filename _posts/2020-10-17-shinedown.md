@@ -1,6 +1,7 @@
 ---
-category: channel
 layout: post
+category: channel
+image: shinedown
 ---
 # Ураа, пробуем новый формат постов!
 
