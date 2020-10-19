@@ -1,46 +1,54 @@
 ---
 layout: compress
 ---
-
 <!doctype html>
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-  <title>На репите каждый день - {{ page.title }}</title>
+  {%- assign title = "На репите каждый день - " | append: page.title -%}
+  <title>{{ title }}</title>
   <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
-  <meta property="og:title" content="На репите каждый день - {{ page.title }}" />
-  {% if page.image %}
-    <meta property="og:image" content="/assets/images/posts/{{ page.image }}.jpg" />
-  {% endif %}
+  <meta property="og:title" content="{{ title }}" />
+  {%- assign logo = "logo" -%}
+  <meta property="og:image" content="/assets/images/posts/{{ page.image | default: logo }}.jpg" />
   <meta property="telegram:channel" content="@{{ site.loolzrules.channel }}" />
-
   <link rel="icon" href="/assets/images/favicon.png">
-
 </head>
 <body>
   <div class="wrapper">
 
     <section id="post">
       <div id="title">
-        <span class="credits left">
-          Telegram-канал:
-          <a href="https://t.me/{{ site.loolzrules.channel }}" target="_blank">@{{ site.loolzrules.channel }}</a>
+        <span class="credits left" id="breadcrumbs">
+          <a href="/channel">Главная</a>
+          {%- assign crumbs = page.url | remove:'/index.html' | split: '/' -%}
+          {%- for crumb in crumbs offset: 2 limit: 3 -%}
+            {%- if forloop.last -%}
+              / {{ page.title }}
+            {%- else -%}
+              {%- assign crumb_limit = forloop.index | plus: 2 -%}
+              / <a href="{% for crumb in crumbs limit: crumb_limit %}{{ crumb | append: '/' | replace:'without-plugin/','without-plugins/' }}{% endfor %}">
+                {{ crumb | replace:'-',' ' | remove:'.html' | capitalize }}
+              </a>
+            {%- endif -%}
+          {%- endfor -%}
         </span>
-        <span class="credits right">{{ page.date | date: "%Y.%m.%d" }}</span>
+        <span class="credits right">
+          Telegram-канал: <a href="https://t.me/{{ site.loolzrules.channel }}" target="_blank">@{{ site.loolzrules.channel }}</a>
+        </span>
         <br>
       </div>
       <hr>
 
-      {% if page.image %}
+      {%- if page.image -%}
         <img src="/assets/images/posts/{{ page.image }}.jpg" alt="{{ page.title }}" class="cover">
-      {% endif %}
+      {%- endif -%}
+
+      <p class="date">{{ page.date | date: "%Y.%m.%d" }}</p>
 
       {{ content }}
-
     </section>
-
   </div>
 </body>
 </html>

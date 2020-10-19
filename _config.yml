@@ -21,18 +21,17 @@ description: [Welcome to my website]
 
 permalink: /:categories/:year/:month/:day/:title/
 
-compress_html:
-  clippings: all
-  comments: all
-  blanklines: true
-  profile: false
-
 defaults:
   -
     scope:
-      path:            "assets/**/*"
+      path: "assets/**/*"
     values:
-      sitemap:         false
+      sitemap: false
+  -
+    scope:
+      path: "_posts/*"
+    values:
+      layout: post
 
 loolzrules:
   channel: loolzrules_channel
