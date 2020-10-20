@@ -1,40 +1,48 @@
-{% if include.youtube %}
+{%- if include.song.name -%}
+  <h3>{{ include.song.name }}</h3>
+{%- endif -%}
+
+{%- if include.song.comment -%}
+  <p>{{ include.song.comment }}</p>
+{%- endif -%}
+
+{%- if include.song.youtube -%}
 <div class="yt">
   <iframe width="650" height="365"
-          src="https://www.youtube-nocookie.com/embed/{{ include.youtube }}?controls=2"
+          src="https://www.youtube-nocookie.com/embed/{{ include.song.youtube }}?controls=2"
           frameborder="0"
           allowfullscreen
   ></iframe>
 </div>
-{% endif %}
+{%- endif -%}
 
-{% if include.soundcloud %}
+{%- if include.song.soundcloud -%}
 <div class="sc">
   <iframe width="100%" height="20"
-          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com{{ include.soundcloud }}&color=%23ff5500&inverse=true&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&bg=dark"
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com{{ include.song.soundcloud }}&color=%23ff5500&inverse=true&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&bg=dark"
           frameborder="0"
   ></iframe>
 </div>
-{% endif %}
+{%- endif -%}
 
-{% if include.spotify or include.yandex or include.apple %}
+{%- if include.song.spotify or include.song.yandex or include.song.apple -%}
 <div class="badge-wrap">
-  {% if include.spotify %}
-  <a href="https://open.spotify.com/{{ include.spotify }}" target="_blank">
+  {%- if include.song.spotify -%}
+  <a href="https://open.spotify.com/{{ include.song.spotify }}" target="_blank">
     <img alt="Spotify" src="/assets/images/spotify.svg" class="badge">
   </a>
-  {% endif %}
+  {%- endif -%}
 
-  {% if include.yandex %}
-  <a href="https://music.yandex.by/{{ include.yandex }}" target="_blank">
+  {%- if include.song.yandex -%}
+  <a href="https://music.yandex.by/{{ include.song.yandex }}" target="_blank">
     <img alt="Yandex Music" src="/assets/images/yandex_music.svg" class="badge">
   </a>
-  {% endif %}
+  {%- endif -%}
 
-  {% if include.apple %}
-  <a href="https://music.apple.com/{{ include.apple }}" target="_blank">
+  {%- if include.song.apple -%}
+  <a href="https://music.apple.com/{{ include.song.apple }}" target="_blank">
     <img alt="Apple Music" src="/assets/images/apple_music.svg" class="badge">
   </a>
-  {% endif %}
+  {%- endif -%}
 </div>
-{% endif %}
+{%- endif -%}

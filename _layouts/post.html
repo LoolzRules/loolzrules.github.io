@@ -1,11 +1,13 @@
 ---
 layout: compress
+date_format: "%Y.%m.%d"
 ---
 <!doctype html>
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-  {%- assign title = "На репите каждый день - " | append: page.title -%}
+  {%- assign performer_name = page.name | default: page.title -%}
+  {%- assign title = "На репите каждый день - " | append: performer_name -%}
   <title>{{ title }}</title>
   <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -25,7 +27,7 @@ layout: compress
           {%- assign crumbs = page.url | remove:'/index.html' | split: '/' -%}
           {%- for crumb in crumbs offset: 2 limit: 3 -%}
             {%- if forloop.last -%}
-              / {{ page.title }}
+              / {{ performer_name }}
             {%- else -%}
               {%- assign crumb_limit = forloop.index | plus: 2 -%}
               / <a href="{% for crumb in crumbs limit: crumb_limit %}{{ crumb | append: '/' | replace:'without-plugin/','without-plugins/' }}{% endfor %}">
@@ -37,7 +39,6 @@ layout: compress
         <span class="credits right">
           Telegram-канал: <a href="https://t.me/{{ site.loolzrules.channel }}" target="_blank">@{{ site.loolzrules.channel }}</a>
         </span>
-        <br>
       </div>
       <hr>
 
@@ -46,10 +47,45 @@ layout: compress
       {%- endif -%}
 
       {%- if page.date != site.time -%}
-        <p id="post_date">{{ page.date | date: "%Y.%m.%d" }}</p>
+        <p id="post_date">{{ page.date | date: layout.date_format }}</p>
       {%- endif -%}
 
       {{ content }}
+
+      {%- for song in page.songs -%}
+        {%- include track.html song=song -%}
+        <hr>
+      {%- endfor -%}
+
+      <div id="nav">
+        {%- assign index_page = "/channel/index.html" -%}
+
+        {%- unless page.url == index_page -%}
+          {%- if page.previous -%}
+            {%- if page.previous.url != index_page -%}
+              <a href="{{ page.previous.url }}">← {{ page.previous.name | default: page.previous.title }}</a>
+            {%- elsif page.previous.previous -%}
+              <a href="{{ page.previous.previous.url }}">← {{ page.previous.name | default: page.previous.previous.title }}</a>
+            {%- else -%}
+              <span></span>
+            {%- endif -%}
+          {%- else -%}
+            <span></span>
+          {%- endif -%}
+
+          {%- if page.next -%}
+            {%- if page.next.url != index_page -%}
+              <a href="{{ page.next.url }}">{{ page.next.name | default: page.next.title }} →</a>
+            {%- elsif page.next.next -%}
+              <a href="{{ page.next.next.url }}">{{ page.next.name | default: page.next.next.title }} →</a>
+            {%- else -%}
+              <span></span>
+            {%- endif -%}
+          {%- else -%}
+            <span></span>
+          {%- endif -%}
+        {%- endunless -%}
+      </div>
     </section>
   </div>
 </body>
