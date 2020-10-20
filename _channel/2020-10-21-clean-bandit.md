@@ -1,5 +1,5 @@
 ---
-image: clean_bandit
+image: cleanbandit
 songs:
     -
         name: "A+E"
