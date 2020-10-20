@@ -1,5 +1,4 @@
 ---
-category: channel
 image: shinedown
 ---
 # Ураа, пробуем новый формат постов!

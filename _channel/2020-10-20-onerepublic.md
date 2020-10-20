@@ -1,5 +1,4 @@
 ---
-category: channel
 image: onerepublic
 ---
 # Ностальгии пост

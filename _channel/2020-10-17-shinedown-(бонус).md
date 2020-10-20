@@ -1,5 +1,4 @@
 ---
-category: channel
 image: shinedown_bonus
 ---
 # ВНЕЗАПНЫЙ бонус к сегодняшнему посту!
