@@ -14,9 +14,9 @@ layout: post
 
 <ul>
     {%- for post in site.channel -%}
-        {%- comment -%} done in order not to include this page itself {%- endcomment -%}
-        {%- if post.date != site.time -%}
-            <li>{{ post.date | date: "%Y.%m.%d" }} - <a href="{{ post.url | remove: 'index.html' }}">{{ post.title }}</a></li>
-        {%- endif -%}
+        {%- comment -%} exclude this page itself {%- endcomment -%}
+        {%- unless post.url == page.url -%}
+            <li>{{ post.date | date: "%Y.%m.%d" }} - <a href="{{ post.url | remove: 'index.html' }}">{{ post.name | default: post.title }}</a></li>
+        {%- endunless -%}
     {%- endfor -%}
 </ul>
