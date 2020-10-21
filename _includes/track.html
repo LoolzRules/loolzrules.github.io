@@ -19,7 +19,7 @@
 {%- if include.song.soundcloud -%}
 <div class="sc">
   <iframe width="100%" height="20"
-          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com{{ include.song.soundcloud }}&color=%23ff5500&inverse=true&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&bg=dark"
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/{{ include.song.soundcloud }}&color=%23ff5500&inverse=true&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&bg=dark"
           frameborder="0"
   ></iframe>
 </div>
@@ -29,19 +29,19 @@
 <div class="badge-wrap">
   {%- if include.song.spotify -%}
   <a href="https://open.spotify.com/{{ include.song.spotify }}" target="_blank">
-    <img alt="Spotify" src="/assets/images/spotify.svg" class="badge">
+    <img alt="{{ include.song.name }} на Spotify" src="/assets/images/spotify.svg" class="badge">
   </a>
   {%- endif -%}
 
   {%- if include.song.yandex -%}
   <a href="https://music.yandex.by/{{ include.song.yandex }}" target="_blank">
-    <img alt="Yandex Music" src="/assets/images/yandex_music.svg" class="badge">
+    <img alt="{{ include.song.name }} на Yandex Music" src="/assets/images/yandex_music.svg" class="badge">
   </a>
   {%- endif -%}
 
   {%- if include.song.apple -%}
   <a href="https://music.apple.com/{{ include.song.apple }}" target="_blank">
-    <img alt="Apple Music" src="/assets/images/apple_music.svg" class="badge">
+    <img alt="{{ include.song.name }} на Apple Music" src="/assets/images/apple_music.svg" class="badge">
   </a>
   {%- endif -%}
 </div>

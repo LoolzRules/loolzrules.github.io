@@ -24,15 +24,9 @@ body {
   & > #title {
     margin: 0;
     padding: 20px 0;
-    & > .credits {
-      margin: 0;
-      @media print, screen and (max-width: 720px) {
-        line-height: 22px;
-      }
-    }
   }
 
-  & > hr:last-of-type {
+  & > hr:last-of-type:not(:first-of-type) {
     margin: 0;
   }
 
@@ -41,10 +35,26 @@ body {
     padding: 20px 0;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+
+    & > * {
+      display: inline-block;
+      margin: 0;
+    }
+
+    & > .spacer {
+      flex: 1 1 auto;
+    }
+
+    & > :not(.spacer) {
+      flex: 0 0 auto;
+    }
 
     @media print, screen and (max-width: 720px) {
       flex-direction: column;
+
+      & > * {
+        line-height: 22px;
+      }
     }
   }
 
@@ -80,5 +90,13 @@ body {
   .badge {
     height: 40px;
     margin: 5px;
+  }
+
+  a.draft {
+    color: #749619;
+
+    &:hover, &:focus, &:active {
+      color: #a2d923;
+    }
   }
 }

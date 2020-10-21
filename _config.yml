@@ -27,6 +27,7 @@ description: [Welcome to my website]
 collections:
   channel:
     output: true
+    permalink: /:collection/:year/:month/:day/:title/
 
 defaults:
   -
@@ -36,10 +37,12 @@ defaults:
       sitemap: false
   -
     scope:
-      path: "_channel/*.md"
+      path: "_channel/*"
     values:
-      permalink: /channel/:year/:month/:day/:title/
       layout: post
-
-loolzrules:
-  channel: loolzrules_channel
+  -
+    scope:
+      path: "_drafts/*"
+    values:
+      layout: post
+      permalink: /channel/:title/

@@ -2,35 +2,35 @@
 image: shinedown
 songs:
     -
-        name: "Breaking Inside"
-        youtube: "9Bli8yJTRd4"
-        spotify: "track/1clfqPOzkRT14PAICrlu4J"
-        yandex: "album/1084871/track/135715"
-        apple: "album/breaking-inside/279812117?i=279812263"
+        name: Breaking Inside
+        youtube: 9Bli8yJTRd4
+        spotify: track/1clfqPOzkRT14PAICrlu4J
+        yandex: album/1084871/track/135715
+        apple: album/breaking-inside/279812117?i=279812263
     -
-        name: "Call Me"
-        youtube: "PuDzAQriQP0"
-        spotify: "track/2nBWxgSZ79w9l6t2rUg6pl?si=ngZeGraLRmCBXQkBHHl99g"
-        yandex: "album/1084871/track/135711"
-        apple: "album/call-me/279812117?i=279812315"
+        name: Call Me
+        youtube: PuDzAQriQP0
+        spotify: track/2nBWxgSZ79w9l6t2rUg6pl?si=ngZeGraLRmCBXQkBHHl99g
+        yandex: album/1084871/track/135711
+        apple: album/call-me/279812117?i=279812315
     -
-        name: "Bully"
-        youtube: "Y7NVxAMQn_I"
-        spotify: "track/0Ldlex2J63L6Dop9Pk2Rz9?si=i-2yfSYKRzWGhDQ6jS951Q"
-        yandex: "album/435136/track/3608557"
-        apple: "album/bully/499945669?i=499945671"
+        name: Bully
+        youtube: Y7NVxAMQn_I
+        spotify: track/0Ldlex2J63L6Dop9Pk2Rz9?si=i-2yfSYKRzWGhDQ6jS951Q
+        yandex: album/435136/track/3608557
+        apple: album/bully/499945669?i=499945671
     -
-        name: "What a Shame"
-        youtube: "q4O_1MdWVo4"
-        spotify: "track/7oA2oLRylvnkJ2hTGEHfvY?si=fuszzJUhRkGrTTtAfCdOVw"
-        yandex: "album/1084871/track/135718"
-        apple: "album/what-a-shame/279812117?i=279812254"
+        name: What a Shame
+        youtube: q4O_1MdWVo4
+        spotify: track/7oA2oLRylvnkJ2hTGEHfvY?si=fuszzJUhRkGrTTtAfCdOVw
+        yandex: album/1084871/track/135718
+        apple: album/what-a-shame/279812117?i=279812254
     -
-        name: "Sound of Madness"
-        youtube: "WGt-8adyabk"
-        spotify: "track/0W9Xvd4Qx1aZPxEi94vgRY?si=i0okL8bdRoGS2d0ng8NYmg"
-        yandex: "album/1084871/track/135498"
-        apple: "album/sound-of-madness/279812117?i=279812223"
+        name: Sound of Madness
+        youtube: WGt-8adyabk
+        spotify: track/0W9Xvd4Qx1aZPxEi94vgRY?si=i0okL8bdRoGS2d0ng8NYmg
+        yandex: album/1084871/track/135498
+        apple: album/sound-of-madness/279812117?i=279812223
         
 ---
 # Ураа, пробуем новый формат постов!

@@ -3,10 +3,10 @@ image: shinedown_bonus
 date: 2020-10-17T00:01
 songs:
     -
-        youtube: "AlZuqUTgcss"
-        spotify: "track/797nCbi25dU888Rj0oG8Fu"
-        yandex: "album/2515181/track/765348"
-        apple: "album/not-strong-enough-feat-brent-smith/1530002272?i=1530002281"
+        youtube: AlZuqUTgcss
+        spotify: track/797nCbi25dU888Rj0oG8Fu
+        yandex: album/2515181/track/765348
+        apple: album/not-strong-enough-feat-brent-smith/1530002272?i=1530002281
 ---
 # ВНЕЗАПНЫЙ бонус к сегодняшнему посту!
 
