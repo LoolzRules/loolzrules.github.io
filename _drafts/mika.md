@@ -1,15 +1,16 @@
 ---
-image: general_kenobi
-tags: ["Русская среда"]
+image: mika
 songs:
     -
-        name: null
-        comment: null
-        youtube: null
-        soundcloud: null
-        spotify: null
-        yandex: null
-        apple: null
+        name: Any Other World
+    -
+        name: Happy Ending
+    -
+        name: Promiseland
+    -
+        name: Jealousy
+    -
+        name: Relax
 ---
 # Hello there
 

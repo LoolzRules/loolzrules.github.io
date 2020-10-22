@@ -1,7 +1,7 @@
 ---
-title: Главная
 layout: post
 permalink: /channel/
+name: Главная
 ---
 
 # Добро пожаловать!

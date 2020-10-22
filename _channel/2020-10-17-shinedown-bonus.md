@@ -1,5 +1,6 @@
 ---
 image: shinedown_bonus
+name: Shinedown (бонус)
 date: 2020-10-17T00:01
 songs:
     -
