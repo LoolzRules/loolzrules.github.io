@@ -1,6 +1,5 @@
 ---
 layout: compress
-date_format: "%Y.%m.%d"
 telegram: loolzrules_channel
 ---
 {%- assign performer_name = page.name | default: page.title -%}
@@ -25,7 +24,6 @@ telegram: loolzrules_channel
 </head>
 <body>
   <div class="wrapper">
-
     <section id="post">
       <div id="title">
         <span class="credits left" id="breadcrumbs">
@@ -50,7 +48,7 @@ telegram: loolzrules_channel
       {%- endif -%}
 
       {%- unless page.url == index_page_address -%}
-        <p id="post_date">{{ page.date | date: layout.date_format }}</p>
+        <p id="post_date">{{ page.date | date: site.date_format }}</p>
       {%- endunless -%}
 
       {{ content }}
@@ -61,6 +59,10 @@ telegram: loolzrules_channel
       {%- endfor -%}
 
       {%- unless page.url == index_page_address -%}
+<!--        {%- assign share_url = site.url | append: page.url | url_encode -%}-->
+<!--        {%- assign share_link = "https://t.me/share/url?url=" | append: share_url | append: "&text=" | append: title -%}-->
+<!--        <p>Понравился пост? {% include safe_link.html href=share_link text="Поделись с друзьями" -%}, мне будет приятно :)</p>-->
+<!--        <hr>-->
         <div id="nav">
           {%- if page.previous -%}
             <a href="{{ page.previous.url }}">← {{ page.previous.name | default: page.previous.title }}</a>

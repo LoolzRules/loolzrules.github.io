@@ -3,7 +3,9 @@ image: gims
 songs:
     -
         name: Reste
-        comment: Честно говоря, совсем не ожидал увидеть тут Стинга, а оказалось что тот тоже приглашал его {%- include safe_link.html href=https://www.youtube.com/watch?v=JrLpf9yziOg text=спеть вместе -%}
+        comment: >-
+            Честно говоря, совсем не ожидал увидеть тут Стинга, а оказалось что тот тоже приглашал
+            его {%- include safe_link.html href="https://www.youtube.com/watch?v=JrLpf9yziOg" text="спеть вместе" -%}
         spotify: track/2vruJV9zbgg0CE1x14vVFW
         yandex:
     -

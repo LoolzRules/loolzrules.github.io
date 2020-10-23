@@ -23,6 +23,7 @@ exclude:
 
 title: [LoolzRules's website]
 description: [Welcome to my website]
+date_format: "%d.%m.%Y"
 
 collections:
   channel:
