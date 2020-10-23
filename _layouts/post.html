@@ -4,8 +4,12 @@ date_format: "%Y.%m.%d"
 telegram: loolzrules_channel
 ---
 {%- assign performer_name = page.name | default: page.title -%}
-{%- assign title = "На репите каждый день - " | append: performer_name -%}
 {%- assign index_page_address = "/channel/" -%}
+{%- if page.url == index_page_address -%}
+  {%- assign title = "На репите каждый день" -%}
+{%- else -%}
+  {%- assign title = performer_name | append: " - На репите каждый день" -%}
+{%- endif -%}
 <!doctype html>
 <html lang="ru">
 <head>

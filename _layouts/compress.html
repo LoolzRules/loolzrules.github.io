@@ -1,7 +1,1 @@
-{% capture _LINE_FEED %}
-{% endcapture %}
-{%- assign content = content | replace: _LINE_FEED, " " -%}
-{%- for i in (1..20) -%}
-  {%- assign content = content | replace: "  ", " " -%}
-{%- endfor -%}
-{{ content }}
+{{ content | normalize_whitespace }}
