@@ -16,16 +16,23 @@ telegram: loolzrules_channel
   <title>{{ title }}</title>
   <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Музыкальный блог">
   <meta property="og:title" content="{{ title }}" />
-  {%- assign logo = "logo" -%}
-  <meta property="og:image" content="/assets/images/posts/{{ page.image | default: logo }}.jpg" />
+  {%- if page.image -%}
+    {%- assign image = "/assets/images/posts/" | append: page.image | append: ".jpg" -%}
+  {%- else -%}
+    {%- assign image = "/assets/images/logo.jpg" -%}
+  {%- endif -%}
+  <meta property="og:image" content="{{ image }}" />
   <meta property="telegram:channel" content="@{{ layout.telegram }}" />
   <link rel="icon" href="/assets/images/favicon.png">
+  <link rel="canonical" href="{{site.url}}{{page.url}}">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 </head>
 <body>
   <div class="wrapper">
     <section id="post">
-      <div id="title">
+      <div id="navigation">
         <span class="credits left" id="breadcrumbs">
           {%- assign index_page_name = "Все посты" -%}
           {%- if page.url == index_page_address -%}
@@ -59,11 +66,11 @@ telegram: loolzrules_channel
       {%- endfor -%}
 
       {%- unless page.url == index_page_address -%}
-<!--        {%- assign share_url = site.url | append: page.url | url_encode -%}-->
-<!--        {%- assign share_link = "https://t.me/share/url?url=" | append: share_url | append: "&text=" | append: title -%}-->
-<!--        <p>Понравился пост? {% include safe_link.html href=share_link text="Поделись с друзьями" -%}, мне будет приятно :)</p>-->
-<!--        <hr>-->
-        <div id="nav">
+        {%- assign share_url = site.url | append: page.url | url_encode -%}
+        {%- assign share_link = "https://t.me/share/url?url=" | append: share_url | append: "&text=" | append: title -%}
+        <p>Понравилось? {% include safe_link.html href=share_link text="Поделись с друзьями" -%}, мне будет приятно :)</p>
+        <hr>
+        <div id="pagination">
           {%- if page.previous -%}
             <a href="{{ page.previous.url }}">← {{ page.previous.name | default: page.previous.title }}</a>
           {%- endif -%}

@@ -5,6 +5,11 @@
 
 body {
   padding: 0;
+  font-family: Tahoma, Geneva, sans-serif!important;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Verdana, Geneva, sans-serif!important;
+  }
 }
 
 #post {
@@ -21,7 +26,7 @@ body {
     font-weight: bold;
   }
 
-  & > #title {
+  & > #navigation {
     margin: 0;
     padding: 20px 0;
   }
@@ -30,8 +35,8 @@ body {
     margin: 0;
   }
 
-  & > #nav,
-  &> #title {
+  & > #pagination,
+  &> #navigation {
     padding: 20px 0;
     display: flex;
     align-items: center;
@@ -93,10 +98,67 @@ body {
   }
 
   a.draft {
-    color: #749619;
+    color: #95c322;
 
     &:hover, &:focus, &:active {
-      color: #a2d923;
+      color: #b7f626;
+    }
+  }
+}
+
+.year {
+  margin-top: 20px;
+}
+
+.accordion {
+  input {
+    display: none;
+
+    & + label {
+      display: block;
+      padding: 8px 16px;
+      margin-bottom: 2px;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.25);
+
+      & > h4 {
+        margin: 0;
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.375);
+      }
+
+      & + .content {
+        display: none;
+
+        & li {
+          padding-top: 4px;
+          padding-bottom: 4px;
+
+          & > a {
+            font-size: 16px;
+            display: inline-block;
+          }
+        }
+      }
+    }
+
+    &:checked + label {
+      margin-bottom: 0;
+      & + .content {
+        display: block;
+      }
+    }
+  }
+
+  .content {
+    background: rgba(255, 255, 255, 0.0625);
+    padding: 8px 8px 8px 0;
+    margin-bottom: 2px;
+
+    & > ul {
+      margin-bottom: 0;
     }
   }
 }
