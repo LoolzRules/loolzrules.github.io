@@ -52,7 +52,7 @@ __На репите каждый день__ - это блог, посвящён�
     const inputs = document.querySelectorAll('.accordion > input');
     const now = new Date();
     const date_now_id = `${now.getFullYear()}_${now.getMonth()}`;
-    for (let i of inputs)
+    for (const i of inputs)
         if (i.id === date_now_id)
             i.checked = true;
 </script>
