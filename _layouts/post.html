@@ -67,7 +67,8 @@ telegram: loolzrules_channel
 
       {%- unless page.url == index_page_address -%}
         {%- assign share_url = site.url | append: page.url | url_encode -%}
-        {%- assign share_link = "https://t.me/share/url?url=" | append: share_url | append: "&text=" | append: title -%}
+        {%- assign share_text = "Больше на " | append: "@" | append: layout.telegram | url_encode -%}
+        {%- assign share_link = "https://t.me/share/url?url=" | append: share_url | append: "&text=" | append: share_text -%}
         <p>Понравилось? {% include safe_link.html href=share_link text="Поделись с друзьями" -%}, мне будет приятно :)</p>
         <hr>
         <div id="pagination">
