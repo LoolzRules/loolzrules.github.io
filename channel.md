@@ -26,7 +26,7 @@ __На репите каждый день__ - это блог, посвящён�
 </div>
 {%- endunless -%}
 
-{%- assign postsByYear =  site.channel | group_by_exp: "post", "post.date | date: '%Y'" -%}
+{%- assign postsByYear = site.channel | reverse | group_by_exp: "post", "post.date | date: '%Y'" -%}
 {%- for year in postsByYear -%}
     <h3 class="year">{{ year.name }}</h3>
     {%- assign postsByMonth =  year.items | group_by_exp: "post", "post.date | date: '%m'" -%}
