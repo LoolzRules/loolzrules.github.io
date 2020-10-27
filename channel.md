@@ -36,9 +36,10 @@ __На репите каждый день__ - это блог, посвящён�
         <div class="accordion">
             <input type="checkbox" id="{{ accordion_id }}"/>
             <label for="{{ accordion_id }}"><h4>{{ page.months[month_index] }}</h4></label>
+            {%- assign month_items = month.items | reverse -%}
             <div class="content">
                 <ul>
-                    {%- for post in month.items -%}
+                    {%- for post in month_items -%}
                         <li><a href="{{ post.url }}">{{ post.name | default: post.title }}</a></li>
                     {%- endfor -%}
                 </ul>
