@@ -83,5 +83,24 @@ telegram: loolzrules_channel
       {%- endunless -%}
     </section>
   </div>
+  {%- assign number_of_memes = site.static_files | where_exp: "file", "file.path contains 'memes'" | size -%}
+  <script type="text/javascript">
+    console.image = function(url) {
+      var image = new Image();
+      image.onload = function() {
+        var style = [
+          'font-size: 1px;',
+          `padding: 250px 250px;`,
+          `background: url(${url}) no-repeat;`,
+          'background-size: contain;'
+        ].join(' ');
+        console.log('%c ', style);
+      };
+      image.src = url;
+    };
+    const index = Math.floor({{ number_of_memes }} * Math.random());
+    console.log("Хочешь всё сломать? Боюсь, тут нечего ломать, уже всё сломано до тебя :D Лучше позалипай на мемас:");
+    console.image(`{{site.url}}/assets/images/memes/${index}.jpg`);
+  </script>
 </body>
 </html>
