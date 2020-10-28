@@ -28,19 +28,19 @@
 {%- if include.song.spotify or include.song.yandex or include.song.apple -%}
 <div class="badge-wrap">
   {%- if include.song.spotify -%}
-  <a href="https://open.spotify.com/{{ include.song.spotify }}" target="_blank">
+  <a href="https://open.spotify.com/{{ include.song.spotify }}" target="_blank" rel="noopener noreferrer nofollow">
     <img alt="{{ include.song.name }} на Spotify" src="/assets/images/spotify.svg" class="badge">
   </a>
   {%- endif -%}
 
   {%- if include.song.yandex -%}
-  <a href="https://music.yandex.by/{{ include.song.yandex }}" target="_blank">
+  <a href="https://music.yandex.by/{{ include.song.yandex }}" target="_blank" rel="noopener noreferrer nofollow">
     <img alt="{{ include.song.name }} на Yandex Music" src="/assets/images/yandex_music.svg" class="badge">
   </a>
   {%- endif -%}
 
   {%- if include.song.apple -%}
-  <a href="https://music.apple.com/{{ include.song.apple }}" target="_blank">
+  <a href="https://music.apple.com/{{ include.song.apple }}" target="_blank" rel="noopener noreferrer nofollow">
     <img alt="{{ include.song.name }} на Apple Music" src="/assets/images/apple_music.svg" class="badge">
   </a>
   {%- endif -%}
