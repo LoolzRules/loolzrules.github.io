@@ -94,6 +94,10 @@ body {
     overflow: hidden;
     max-width: 100%;
 
+    & + p {
+      margin-top: 20px;
+    }
+
     & > iframe {
       position: absolute;
       top: 0;
