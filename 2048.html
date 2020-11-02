@@ -2,11 +2,298 @@
 layout: games
 ---
 <div id="main_2048">
-  {%- assign pow = 2 -%}
-  {%- for val in (1..16) -%}
-    <div class="tile">
-      <div class="value v{{pow}}"></div>
-    </div>
-    {%- assign pow = pow | times: 2 -%}
-  {%- endfor -%}
+  <canvas height="600" width="600"></canvas>
 </div>
+<script type="text/javascript">
+
+  class Game {
+    static colors = {
+      "border": "#a23f12",
+      "text": "#2e2e2e",
+      0: "#ead6a3",
+      2: "#eadb4b",
+      4: "#eebe3c",
+      8: "#f19e52",
+      16: "#f08b5d",
+      32: "#79ac4f",
+      64: "#518d98",
+      128: "#a3c4cb",
+      256: "#8fc2a3",
+      512: "#8ed5f1",
+      1024: "#41a8d1",
+      2048: "#36579c",
+      4096: "#336995",
+      8192: "#6b648e",
+      16384: "#80517b",
+      32768: "#b05287",
+      65536: "#cb3d4d",
+      131072: "#e56059",
+    };
+
+    static directions = {
+      "UP": 0,
+      "RIGHT": 1,
+      "DOWN": 2,
+      "LEFT": 3,
+    };
+
+    constructor(canvas) {
+      this.$c = canvas;
+      this.ctx = canvas.getContext("2d");
+      this.ctx.textAlign = "center";
+      this.isMoving = false;
+
+      this.grid = new Array(4);
+      for (let i = 0; i < 4; i++) {
+        this.grid[i] = new Array(4);
+
+        for (let j = 0; j < 4; j++) {
+          this.grid[i][j] = {
+            value: 0,
+            progress: 100,
+          };
+        }
+      }
+      this.isFree = (new Array(16)).fill(true);
+
+      this.spawnANumber();
+      this.spawnANumber();
+      this.render();
+
+      document.addEventListener('keyup', (event) => {
+        if (this.isMoving) {
+          return;
+        }
+
+        let direction;
+        switch (event.code) {
+          case "ArrowUp":
+          case "KeyW": {
+            direction = Game.directions.UP;
+            break;
+          }
+          case "ArrowRight":
+          case "KeyD": {
+            direction = Game.directions.RIGHT;
+            break;
+          }
+          case "ArrowDown":
+          case "KeyS": {
+            direction = Game.directions.DOWN;
+            break;
+          }
+          case "ArrowLeft":
+          case "KeyA": {
+            direction = Game.directions.LEFT;
+            break;
+          }
+          default: {
+            return;
+          }
+        }
+        this.move(direction);
+      });
+    }
+
+    updateFreeCells() {
+      this.isFree = [];
+      for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 3; j++) {
+          this.isFree.push(this.grid[i][j].value === 0);
+        }
+      }
+    }
+
+    spawnANumber() {
+      const freeCellIndices = this.isFree.reduce((acc, val, idx) => {
+        if (val) {
+          acc.push(idx);
+        }
+        return acc;
+      }, []);
+      const newCellIndexIndex = Math.floor(Math.random() * freeCellIndices.length);
+      const newCellIndex = freeCellIndices[newCellIndexIndex];
+      const value = Math.random() < 0.75 ? 2 : 4;
+      const x = Math.floor(newCellIndex / 4);
+      const y = newCellIndex % 4;
+      this.isFree[newCellIndex] = false;
+      this.grid[x][y] = { value, progress: 100 };
+    }
+
+    copy() {
+      return this.grid.map(row => row.map(el => ({ ...el })));
+    }
+
+    rotate90(grid) {
+      console.log(90, JSON.stringify(grid));
+      let temp;
+      for (let i = 0; i < 3; i++) {
+        temp = grid[0][0];
+        grid[0][i] = grid[3 - i][0];
+        grid[3 - i][0] = grid[3][3 - i];
+        grid[3][3 - i] = grid[i][3];
+        grid[i][3] = temp;
+      }
+      temp = grid[1][1];
+      grid[1][1] = grid[2][1];
+      grid[2][1] = grid[2][2];
+      grid[2][2] = grid[1][2];
+      grid[1][2] = temp;
+      console.log(91, JSON.stringify(grid));
+    }
+
+    rotate180(grid) {
+      grid.forEach(row => row.reverse());
+    }
+
+    rotate270(grid) {
+      console.log(270, JSON.stringify(grid));
+      let temp;
+      for (let i = 0; i < 3; i++) {
+        temp = grid[0][0];
+        grid[0][i] = grid[i][3];
+        grid[i][3] = grid[3][3 - i];
+        grid[3][3 - i] = grid[3 - i][0];
+        grid[3 - i][0] = temp;
+      }
+      temp = grid[1][1];
+      grid[1][1] = grid[1][2];
+      grid[1][2] = grid[2][2];
+      grid[2][2] = grid[2][1];
+      grid[2][1] = temp;
+      console.log(271, JSON.stringify(grid));
+    }
+
+    slide(grid) {
+      for (let i = 0; i < 4; i++) {
+        let row = grid[i].filter(el => el.value > 0);
+        let zeros = new Array(4 - row.length);
+        for (let j = 0; j < zeros.length; j++) {
+          zeros[j] = {
+            value: 0,
+            progress: 0,
+          };
+        }
+        grid[i] = row.concat(zeros);
+      }
+    }
+
+    combine(grid) {
+      // update counter maybe
+      for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 3; j++) {
+          if (grid[i][j].value === grid[i][j + 1].value) {
+            grid[i][j].value *= 2;
+            grid[i][j + 1].value = 0;
+            j++;
+          }
+        }
+      }
+    }
+
+    equalToCurrentGrid(grid) {
+      for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 3; j++) {
+          if (this.grid[i][j].value !== grid[i][j].value) {
+            return false;
+          }
+        }
+      }
+      return true;
+    }
+
+    move(direction) {
+      const copy = this.copy();
+      switch (direction) {
+        case(Game.directions.UP): {
+          this.rotate270(copy);
+          this.slide(copy);
+          this.combine(copy);
+          this.slide(copy);
+          this.rotate90(copy);
+          break;
+        }
+        case(Game.directions.RIGHT): {
+          this.rotate180(copy);
+          this.slide(copy);
+          this.combine(copy);
+          this.slide(copy);
+          this.rotate180(copy);
+          break;
+        }
+        case(Game.directions.DOWN): {
+          this.rotate90(copy);
+          this.slide(copy);
+          this.combine(copy);
+          this.slide(copy);
+          this.rotate270(copy);
+          break;
+        }
+        case(Game.directions.LEFT): {
+          this.slide(copy);
+          this.combine(copy);
+          this.slide(copy);
+          break;
+        }
+        default: {
+          break;
+        }
+      }
+
+      const gridsAreEqual = this.equalToCurrentGrid(copy);
+      if (!gridsAreEqual) {
+        this.grid = copy;
+        this.updateFreeCells();
+        this.spawnANumber();
+        this.render();
+      }
+    }
+
+    render() {
+      this.drawGrid();
+      this.drawNumbers();
+    }
+
+    drawGrid() {
+      this.ctx.fillStyle = Game.colors[0];
+      this.ctx.strokeStyle = Game.colors.border;
+      this.ctx.lineWidth = 20;
+      this.ctx.fillRect(0, 0, 600, 600);
+
+      for (let i = 0; i < 5; i++) {
+        const offset = 580 / 4 * i + 10;
+        this.ctx.moveTo(offset, 0);
+        this.ctx.lineTo(offset, 600);
+        this.ctx.stroke();
+        this.ctx.moveTo(0, offset);
+        this.ctx.lineTo(600, offset);
+        this.ctx.stroke();
+      }
+    }
+
+    drawNumbers() {
+      const squareSide = 125;
+      for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+          const val = this.grid[j][i].value.toString(10);
+          this.ctx.fillStyle = Game.colors[val];
+          const corner = {
+            x: 20 + (squareSide + 20) * i,
+            y: 20 + (squareSide + 20) * j,
+          };
+          this.ctx.fillRect(corner.x, corner.y, squareSide, squareSide);
+
+          if (val === "0")
+            continue;
+
+          const fontSize = 100 - val.length * 10;
+          this.ctx.font = `${fontSize}px Arial`;
+          this.ctx.fillStyle = Game.colors.text;
+          this.ctx.fillText(val, corner.x + squareSide / 2, corner.y + squareSide / 2 + fontSize * .375);
+        }
+      }
+    }
+  }
+
+  const g = new Game(document.querySelector("#main_2048 > canvas"));
+</script>

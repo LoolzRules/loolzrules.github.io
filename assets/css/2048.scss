@@ -1,68 +1,12 @@
 ---
 ---
-
 #main_2048 {
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 10px 0;
-  border-radius: 10px;
-  position: relative;
+  padding: 20px 0;
 
-  & > .tile,
-  & > .grid {
-    flex: 0 0 25%;
-    box-sizing: border-box;
-    padding-bottom: 25%;
-    position: relative;
-
-    & > .value {
-      position: absolute;
-      top: 2.5%;
-      right: 2.5%;
-      bottom: 2.5%;
-      left: 2.5%;
-      border-radius: 4px;
-      background-color: #ead6a3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-shadow: 0 0 2px black;
-
-      $val: 1;
-      $colors: (
-        #eadb4b,
-        #eebe3c,
-        #f19e52,
-        #f08b5d,
-        #79ac4f,
-        #518d98,
-        #a3c4cb,
-        #8fc2a3,
-        #8ed5f1,
-        #41a8d1,
-        #36579c,
-        #336995,
-        #6b648e,
-        #80517b,
-        #b05287,
-        #cb3d4d,
-        #e56059,
-      );
-      @each $color in $colors {
-        $val: $val * 2;
-        &.v#{$val} {
-          &:after {
-            content: ""+$val;
-          }
-          font-size: (10 - str-length(""+$val)) * 1.375vw;
-          background-color: $color;
-
-          @media (min-width: 711px) {
-            font-size: (10 - str-length(""+$val)) * 10px;
-          }
-        }
-      }
-    }
+  > canvas {
+    width: 100%;
+    display: block;
+    border-radius: 3.33%;
   }
 }
