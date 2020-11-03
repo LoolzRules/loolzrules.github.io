@@ -2,32 +2,31 @@
 layout: games
 ---
 <div id="main_2048">
-  <canvas height="600" width="600"></canvas>
+  <canvas height="675" width="600"></canvas>
 </div>
 <script type="text/javascript">
-
   class Game {
     static colors = {
       "border": "#a23f12",
-      "text": "#2e2e2e",
+      "text": "#3e3e3e",
       0: "#ead6a3",
-      2: "#eadb4b",
-      4: "#eebe3c",
-      8: "#f19e52",
-      16: "#f08b5d",
-      32: "#79ac4f",
-      64: "#518d98",
-      128: "#a3c4cb",
-      256: "#8fc2a3",
-      512: "#8ed5f1",
+      2: "#f08b5d",
+      4: "#ea9846",
+      8: "#e0bc2d",
+      16: "#d1d647",
+      32: "#99bf30",
+      64: "#7ecf4c",
+      128: "#82cc6e",
+      256: "#4fd29e",
+      512: "#70b4cf",
       1024: "#41a8d1",
-      2048: "#36579c",
-      4096: "#336995",
-      8192: "#6b648e",
-      16384: "#80517b",
-      32768: "#b05287",
-      65536: "#cb3d4d",
-      131072: "#e56059",
+      2048: "#4a76d4",
+      4096: "#448ec9",
+      8192: "#9086bf",
+      16384: "#b572ae",
+      32768: "#cc609d",
+      65536: "#cc5c69",
+      131072: "#e64b43",
     };
 
     static directions = {
@@ -37,21 +36,32 @@ layout: games
       "LEFT": 3,
     };
 
-    constructor(canvas) {
-      this.$c = canvas;
-      this.ctx = canvas.getContext("2d");
+    constructor() {
+      this.$c = document.querySelector("#main_2048 > canvas");
+      this.s = this.$c.width;
+      this.o = this.$c.height - this.$c.width;
+      this.paddings = this.s / 40;
+      this.ctx = this.$c.getContext("2d");
       this.ctx.textAlign = "center";
-      this.isMoving = false;
+
+      this.initGame();
+      this.addKeyboardControls();
+    }
+
+    addKeyboardControls() {
+      document.addEventListener('keyup', this.processKeyUp.bind(this), false);
+    }
+
+    initGame() {
+      this.canProcessInput = true;
+      this.score = 0;
 
       this.grid = new Array(4);
       for (let i = 0; i < 4; i++) {
         this.grid[i] = new Array(4);
 
         for (let j = 0; j < 4; j++) {
-          this.grid[i][j] = {
-            value: 0,
-            progress: 100,
-          };
+          this.grid[i][j] = 0;
         }
       }
       this.isFree = (new Array(16)).fill(true);
@@ -59,53 +69,53 @@ layout: games
       this.spawnANumber();
       this.spawnANumber();
       this.render();
+    }
 
-      document.addEventListener('keyup', (event) => {
-        if (this.isMoving) {
+    processKeyUp(event) {
+      if (!this.canProcessInput) {
+        return;
+      }
+
+      let direction;
+      switch (event.code) {
+        case "ArrowUp":
+        case "KeyW": {
+          direction = Game.directions.UP;
+          break;
+        }
+        case "ArrowRight":
+        case "KeyD": {
+          direction = Game.directions.RIGHT;
+          break;
+        }
+        case "ArrowDown":
+        case "KeyS": {
+          direction = Game.directions.DOWN;
+          break;
+        }
+        case "ArrowLeft":
+        case "KeyA": {
+          direction = Game.directions.LEFT;
+          break;
+        }
+        default: {
           return;
         }
-
-        let direction;
-        switch (event.code) {
-          case "ArrowUp":
-          case "KeyW": {
-            direction = Game.directions.UP;
-            break;
-          }
-          case "ArrowRight":
-          case "KeyD": {
-            direction = Game.directions.RIGHT;
-            break;
-          }
-          case "ArrowDown":
-          case "KeyS": {
-            direction = Game.directions.DOWN;
-            break;
-          }
-          case "ArrowLeft":
-          case "KeyA": {
-            direction = Game.directions.LEFT;
-            break;
-          }
-          default: {
-            return;
-          }
-        }
-        this.move(direction);
-      });
+      }
+      this.move(direction);
     }
 
     updateFreeCells() {
       this.isFree = [];
       for (let i = 0; i < 4; i++) {
-        for (let j = 0; j < 3; j++) {
-          this.isFree.push(this.grid[i][j].value === 0);
+        for (let j = 0; j < 4; j++) {
+          this.isFree.push(this.grid[j][i] === 0);
         }
       }
     }
 
     spawnANumber() {
-      const freeCellIndices = this.isFree.reduce((acc, val, idx) => {
+      const freeCellIndices = this.isFree.reduce(function (acc, val, idx) {
         if (val) {
           acc.push(idx);
         }
@@ -113,22 +123,25 @@ layout: games
       }, []);
       const newCellIndexIndex = Math.floor(Math.random() * freeCellIndices.length);
       const newCellIndex = freeCellIndices[newCellIndexIndex];
-      const value = Math.random() < 0.75 ? 2 : 4;
-      const x = Math.floor(newCellIndex / 4);
-      const y = newCellIndex % 4;
+      const value = Math.random() < 0.9 ? 2 : 4;
+      const x = newCellIndex % 4;
+      const y = Math.floor(newCellIndex / 4);
       this.isFree[newCellIndex] = false;
-      this.grid[x][y] = { value, progress: 100 };
+      this.grid[x][y] = value;
     }
 
     copy() {
-      return this.grid.map(row => row.map(el => ({ ...el })));
+      return this.grid.map(function (row) {
+        return row.map(function (el) {
+          return el;
+        });
+      });
     }
 
     rotate90(grid) {
-      console.log(90, JSON.stringify(grid));
       let temp;
       for (let i = 0; i < 3; i++) {
-        temp = grid[0][0];
+        temp = grid[0][i];
         grid[0][i] = grid[3 - i][0];
         grid[3 - i][0] = grid[3][3 - i];
         grid[3][3 - i] = grid[i][3];
@@ -139,18 +152,18 @@ layout: games
       grid[2][1] = grid[2][2];
       grid[2][2] = grid[1][2];
       grid[1][2] = temp;
-      console.log(91, JSON.stringify(grid));
     }
 
     rotate180(grid) {
-      grid.forEach(row => row.reverse());
+      grid.forEach(function (row) {
+        row.reverse();
+      });
     }
 
     rotate270(grid) {
-      console.log(270, JSON.stringify(grid));
       let temp;
       for (let i = 0; i < 3; i++) {
-        temp = grid[0][0];
+        temp = grid[0][i];
         grid[0][i] = grid[i][3];
         grid[i][3] = grid[3][3 - i];
         grid[3][3 - i] = grid[3 - i][0];
@@ -161,30 +174,28 @@ layout: games
       grid[1][2] = grid[2][2];
       grid[2][2] = grid[2][1];
       grid[2][1] = temp;
-      console.log(271, JSON.stringify(grid));
     }
 
     slide(grid) {
       for (let i = 0; i < 4; i++) {
-        let row = grid[i].filter(el => el.value > 0);
+        let row = grid[i].filter(function (el) {
+          return el > 0;
+        });
         let zeros = new Array(4 - row.length);
         for (let j = 0; j < zeros.length; j++) {
-          zeros[j] = {
-            value: 0,
-            progress: 0,
-          };
+          zeros[j] = 0;
         }
         grid[i] = row.concat(zeros);
       }
     }
 
     combine(grid) {
-      // update counter maybe
       for (let i = 0; i < 4; i++) {
         for (let j = 0; j < 3; j++) {
-          if (grid[i][j].value === grid[i][j + 1].value) {
-            grid[i][j].value *= 2;
-            grid[i][j + 1].value = 0;
+          if (grid[i][j] === grid[i][j + 1]) {
+            grid[i][j] *= 2;
+            grid[i][j + 1] = 0;
+            this.score += grid[i][j];
             j++;
           }
         }
@@ -193,8 +204,8 @@ layout: games
 
     equalToCurrentGrid(grid) {
       for (let i = 0; i < 4; i++) {
-        for (let j = 0; j < 3; j++) {
-          if (this.grid[i][j].value !== grid[i][j].value) {
+        for (let j = 0; j < 4; j++) {
+          if (this.grid[i][j] !== grid[i][j]) {
             return false;
           }
         }
@@ -203,6 +214,7 @@ layout: games
     }
 
     move(direction) {
+      this.canProcessInput = false;
       const copy = this.copy();
       switch (direction) {
         case(Game.directions.UP): {
@@ -246,54 +258,103 @@ layout: games
         this.updateFreeCells();
         this.spawnANumber();
         this.render();
+
+        const allCellsAreTaken = this.isFree.reduce(function (acc, val) {
+          return acc && !val;
+        }, true);
+
+        if (allCellsAreTaken) {
+          const newCopy = this.copy();
+          this.combine(newCopy);
+          this.rotate90(newCopy);
+          this.combine(newCopy);
+          this.rotate90(newCopy);
+          this.combine(newCopy);
+          this.rotate90(newCopy);
+          this.combine(newCopy);
+          this.rotate90(newCopy);
+          if (this.equalToCurrentGrid(newCopy)) {
+            this.showEndgameDialog();
+            return;
+          }
+        }
       }
+      this.canProcessInput = true;
     }
 
     render() {
       this.drawGrid();
       this.drawNumbers();
+      this.drawScore();
     }
 
     drawGrid() {
       this.ctx.fillStyle = Game.colors[0];
+      this.ctx.fillRect(0, 0, this.s, this.s);
+
+      this.ctx.fillStyle = Game.colors.border;
+      this.ctx.fillRect(0, this.s, this.s, this.o);
+
       this.ctx.strokeStyle = Game.colors.border;
-      this.ctx.lineWidth = 20;
-      this.ctx.fillRect(0, 0, 600, 600);
+      this.ctx.lineWidth = this.paddings;
 
       for (let i = 0; i < 5; i++) {
-        const offset = 580 / 4 * i + 10;
+        const offset = (this.s - this.paddings) / 4 * i + (this.paddings / 2);
         this.ctx.moveTo(offset, 0);
-        this.ctx.lineTo(offset, 600);
+        this.ctx.lineTo(offset, this.s);
         this.ctx.stroke();
         this.ctx.moveTo(0, offset);
-        this.ctx.lineTo(600, offset);
+        this.ctx.lineTo(this.s, offset);
         this.ctx.stroke();
       }
     }
 
     drawNumbers() {
-      const squareSide = 125;
+      const squareSide = (this.s - this.paddings * 5) / 4;
       for (let i = 0; i < 4; i++) {
         for (let j = 0; j < 4; j++) {
-          const val = this.grid[j][i].value.toString(10);
+          const val = this.grid[j][i].toString(10);
           this.ctx.fillStyle = Game.colors[val];
           const corner = {
-            x: 20 + (squareSide + 20) * i,
-            y: 20 + (squareSide + 20) * j,
+            x: this.paddings + (squareSide + this.paddings) * i,
+            y: this.paddings + (squareSide + this.paddings) * j,
           };
           this.ctx.fillRect(corner.x, corner.y, squareSide, squareSide);
 
           if (val === "0")
             continue;
 
-          const fontSize = 100 - val.length * 10;
+
+          const fontSize = (10 - val.length) * this.s / 60;
           this.ctx.font = `${fontSize}px Arial`;
           this.ctx.fillStyle = Game.colors.text;
           this.ctx.fillText(val, corner.x + squareSide / 2, corner.y + squareSide / 2 + fontSize * .375);
         }
       }
     }
+
+    drawScore() {
+      const score = this.score.toString(10);
+      const fontSize = this.s / 10;
+      this.ctx.font = `${fontSize}px Arial`;
+      this.ctx.fillStyle = Game.colors[0];
+      this.ctx.fillText(score, this.s / 2, this.s + (this.o - this.paddings) / 2 + fontSize * .375);
+    }
+
+    showEndgameDialog() {
+      this.ctx.fillStyle = Game.colors[0];
+      this.ctx.globalAlpha = 0.875;
+      this.ctx.fillRect(0, 0, this.s, this.s + this.o);
+
+      this.ctx.fillStyle = Game.colors.border;
+      this.ctx.globalAlpha = 1;
+      const fontSize = this.s / 7.5;
+      this.ctx.font = `${fontSize / 1.5}px Arial`;
+      this.ctx.fillText("Your score is", this.s / 2, (this.s + this.o) / 2 - fontSize * .375);
+      this.ctx.font = `${fontSize}px Arial`;
+      this.ctx.fillText(this.score.toString(10), this.s / 2, (this.s + this.o) / 2 + fontSize * .875);
+    }
   }
 
-  const g = new Game(document.querySelector("#main_2048 > canvas"));
+  const g = new Game();
 </script>
