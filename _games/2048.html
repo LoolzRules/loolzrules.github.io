@@ -1,11 +1,10 @@
 ---
-layout: games
 ---
-<div id="main_2048">
+<div id="main">
   <canvas height="675" width="600"></canvas>
 </div>
 <script type="text/javascript">
-  class Game {
+  class G2048 {
     static colors = {
       "border": "#a23f12",
       "text": "#3e3e3e",
@@ -37,12 +36,13 @@ layout: games
     };
 
     constructor() {
-      this.$c = document.querySelector("#main_2048 > canvas");
+      this.$c = document.querySelector("#main > canvas");
       this.s = this.$c.width;
       this.o = this.$c.height - this.$c.width;
       this.paddings = this.s / 40;
       this.ctx = this.$c.getContext("2d");
       this.ctx.textAlign = "center";
+      this.ctx.lineWidth = this.paddings;
 
       this.initGame();
       this.addKeyboardControls();
@@ -80,22 +80,22 @@ layout: games
       switch (event.code) {
         case "ArrowUp":
         case "KeyW": {
-          direction = Game.directions.UP;
+          direction = G2048.directions.UP;
           break;
         }
         case "ArrowRight":
         case "KeyD": {
-          direction = Game.directions.RIGHT;
+          direction = G2048.directions.RIGHT;
           break;
         }
         case "ArrowDown":
         case "KeyS": {
-          direction = Game.directions.DOWN;
+          direction = G2048.directions.DOWN;
           break;
         }
         case "ArrowLeft":
         case "KeyA": {
-          direction = Game.directions.LEFT;
+          direction = G2048.directions.LEFT;
           break;
         }
         default: {
@@ -217,7 +217,7 @@ layout: games
       this.canProcessInput = false;
       const copy = this.copy();
       switch (direction) {
-        case(Game.directions.UP): {
+        case(G2048.directions.UP): {
           this.rotate270(copy);
           this.slide(copy);
           this.combine(copy);
@@ -225,7 +225,7 @@ layout: games
           this.rotate90(copy);
           break;
         }
-        case(Game.directions.RIGHT): {
+        case(G2048.directions.RIGHT): {
           this.rotate180(copy);
           this.slide(copy);
           this.combine(copy);
@@ -233,7 +233,7 @@ layout: games
           this.rotate180(copy);
           break;
         }
-        case(Game.directions.DOWN): {
+        case(G2048.directions.DOWN): {
           this.rotate90(copy);
           this.slide(copy);
           this.combine(copy);
@@ -241,7 +241,7 @@ layout: games
           this.rotate270(copy);
           break;
         }
-        case(Game.directions.LEFT): {
+        case(G2048.directions.LEFT): {
           this.slide(copy);
           this.combine(copy);
           this.slide(copy);
@@ -289,14 +289,13 @@ layout: games
     }
 
     drawGrid() {
-      this.ctx.fillStyle = Game.colors[0];
+      this.ctx.fillStyle = G2048.colors[0];
       this.ctx.fillRect(0, 0, this.s, this.s);
 
-      this.ctx.fillStyle = Game.colors.border;
+      this.ctx.fillStyle = G2048.colors.border;
       this.ctx.fillRect(0, this.s, this.s, this.o);
 
-      this.ctx.strokeStyle = Game.colors.border;
-      this.ctx.lineWidth = this.paddings;
+      this.ctx.strokeStyle = G2048.colors.border;
 
       for (let i = 0; i < 5; i++) {
         const offset = (this.s - this.paddings) / 4 * i + (this.paddings / 2);
@@ -314,7 +313,7 @@ layout: games
       for (let i = 0; i < 4; i++) {
         for (let j = 0; j < 4; j++) {
           const val = this.grid[j][i].toString(10);
-          this.ctx.fillStyle = Game.colors[val];
+          this.ctx.fillStyle = G2048.colors[val];
           const corner = {
             x: this.paddings + (squareSide + this.paddings) * i,
             y: this.paddings + (squareSide + this.paddings) * j,
@@ -327,7 +326,7 @@ layout: games
 
           const fontSize = (10 - val.length) * this.s / 60;
           this.ctx.font = `${fontSize}px Arial`;
-          this.ctx.fillStyle = Game.colors.text;
+          this.ctx.fillStyle = G2048.colors.text;
           this.ctx.fillText(val, corner.x + squareSide / 2, corner.y + squareSide / 2 + fontSize * .375);
         }
       }
@@ -337,16 +336,16 @@ layout: games
       const score = this.score.toString(10);
       const fontSize = this.s / 10;
       this.ctx.font = `${fontSize}px Arial`;
-      this.ctx.fillStyle = Game.colors[0];
+      this.ctx.fillStyle = G2048.colors[0];
       this.ctx.fillText(score, this.s / 2, this.s + (this.o - this.paddings) / 2 + fontSize * .375);
     }
 
     showEndgameDialog() {
-      this.ctx.fillStyle = Game.colors[0];
+      this.ctx.fillStyle = G2048.colors[0];
       this.ctx.globalAlpha = 0.875;
       this.ctx.fillRect(0, 0, this.s, this.s + this.o);
 
-      this.ctx.fillStyle = Game.colors.border;
+      this.ctx.fillStyle = G2048.colors.border;
       this.ctx.globalAlpha = 1;
       const fontSize = this.s / 7.5;
       this.ctx.font = `${fontSize / 1.5}px Arial`;
@@ -356,5 +355,5 @@ layout: games
     }
   }
 
-  const g = new Game();
+  const g = new G2048();
 </script>

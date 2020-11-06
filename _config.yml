@@ -28,13 +28,15 @@ collections:
   channel:
     output: true
     permalink: /:collection/:year/:month/:day/:title/
+  games:
+    output: true
+    permalink: /:collection/:title/
 
 defaults:
-  -
-    scope:
-      path: "assets/**/*"
+  - scope:
+      path: "_games/*"
     values:
-      sitemap: false
+      layout: game
   -
     scope:
       path: "_channel/*"
