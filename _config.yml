@@ -39,7 +39,7 @@ defaults:
       layout: game
   -
     scope:
-      path: "_channel/*"
+      path: "_channel/**/*"
     values:
       layout: post
   -
