@@ -21,7 +21,9 @@ author_telegram: loolzrules
   <meta name="author" content="@loolzrules">
   <meta property="og:title" content="{{ title }}" />
   {%- if page.image -%}
-    {%- assign image = "/assets/images/posts/" | append: page.image | append: ".jpg" -%}
+    {%- assign year = page.date | date: '%Y' -%}
+    {%- assign month = page.date | date: '%m' -%}
+    {%- capture image -%}/assets/images/posts/{{ year }}/{{ month }}/{{ page.image }}.jpg{%- endcapture -%}
   {%- else -%}
     {%- assign image = "/assets/images/logo.jpg" -%}
   {%- endif -%}
@@ -52,7 +54,7 @@ author_telegram: loolzrules
     <hr>
     <section id="post">
       {%- if page.image -%}
-        <img src="/assets/images/posts/{{ page.image }}.jpg" alt="{{ performer_name }}" class="cover">
+        <img src="{{ image }}" alt="{{ performer_name }}" class="cover">
       {%- endif -%}
 
       {%- unless page.url == index_page_address -%}
