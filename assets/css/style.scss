@@ -5,7 +5,7 @@
 
 body {
   padding: 0;
-  font-family: Tahoma, Geneva, sans-serif!important;
+  font-family: Tahoma, Geneva, sans-serif !important;
   min-height: 100vh;
   background-color: #252525;
   @media (min-width: 711px) {
@@ -16,13 +16,13 @@ body {
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: Verdana, Geneva, sans-serif!important;
+    font-family: Verdana, Geneva, sans-serif !important;
   }
 }
 
 .wrapper {
   min-height: 100vh;
-  box-shadow: 0 0 4px rgba(0,0,0,0.5);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
   background-color: #2e2e2e;
 
   display: flex;
@@ -44,7 +44,6 @@ body {
     hyphens: auto;
   }
 }
-
 
 
 #pagination,
@@ -120,6 +119,7 @@ body {
   .badge-wrap {
     padding: 5px;
   }
+
   .badge {
     height: 40px;
     margin: 5px;
@@ -139,55 +139,42 @@ body {
 }
 
 .accordion {
-  input {
-    display: none;
 
-    & + label {
-      display: block;
-      padding: 8px 16px;
-      margin-bottom: 2px;
-      cursor: pointer;
-      background: rgba(255, 255, 255, 0.25);
+  & > summary {
+    outline: none;
+    display: block;
+    padding: 8px 16px;
+    margin-bottom: 2px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.25);
 
-      & > h4 {
-        margin: 0;
-      }
-
-      &:hover {
-        background: rgba(255, 255, 255, 0.375);
-      }
-
-      & + .content {
-        display: none;
-
-        & li {
-          padding-top: 4px;
-          padding-bottom: 4px;
-
-          & > a {
-            font-size: 16px;
-            display: inline-block;
-          }
-        }
-      }
-    }
-
-    &:checked + label {
-      margin-bottom: 0;
-      & + .content {
-        display: block;
-      }
+    &:hover {
+      background: rgba(255, 255, 255, 0.375);
     }
   }
 
-  .content {
+  & > .content {
     background: rgba(255, 255, 255, 0.0625);
     padding: 8px 8px 8px 0;
     margin-bottom: 2px;
 
     & > ul {
       margin-bottom: 0;
+
+      & > li {
+        padding-top: 4px;
+        padding-bottom: 4px;
+
+        & > a {
+          font-size: 16px;
+          display: inline-block;
+        }
+      }
     }
+  }
+
+  &[open] > summary {
+    margin-bottom: 0;
   }
 }
 

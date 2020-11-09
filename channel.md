@@ -10,12 +10,10 @@ __На репите каждый день__ - это блог, посвящён�
 зато часто появляются песни, которые вы, скорее всего, не слышали.
 
 ## Архив:
-
 {% assign num_of_posts = site.posts | size -%}
 {%- unless num_of_posts == 0 -%}
-<div class="accordion">
-    <input type="checkbox" id="drafts" checked="true"/>
-    <label for="drafts"><h4>Черновики</h4></label>
+<details class="accordion">
+    <summary>Черновики</summary>
     <div class="content">
         <ul>
             {%- for post in site.posts -%}
@@ -23,7 +21,7 @@ __На репите каждый день__ - это блог, посвящён�
             {%- endfor -%}
         </ul>
     </div>
-</div>
+</details>
 {%- endunless -%}
 
 {%- assign postsByYear = site.channel | reverse | group_by_exp: "post", "post.date | date: '%Y'" -%}
@@ -33,9 +31,8 @@ __На репите каждый день__ - это блог, посвящён�
     {%- for month in postsByMonth -%}
         {%- assign month_index = month.name | minus: 1 -%}
         {%- assign accordion_id = year.name | append: "_" | append: month_index -%}
-        <div class="accordion">
-            <input type="checkbox" id="{{ accordion_id }}"/>
-            <label for="{{ accordion_id }}"><h4>{{ page.months[month_index] }}</h4></label>
+        <details class="accordion" id="{{ accordion_id }}">
+            <summary>{{ page.months[month_index] }}</summary>
             {%- assign month_items = month.items | reverse -%}
             <div class="content">
                 <ul>
@@ -44,15 +41,14 @@ __На репите каждый день__ - это блог, посвящён�
                     {%- endfor -%}
                 </ul>
             </div>
-        </div>
+        </details>
     {%- endfor -%}
 {%- endfor -%}
 
 <script type="application/javascript">
-    const inputs = document.querySelectorAll('.accordion > input');
+    const accordions = document.querySelectorAll('.accordion');
     const now = new Date();
     const date_now_id = `${now.getFullYear()}_${now.getMonth()}`;
-    for (const i of inputs)
-        if (i.id === date_now_id)
-            i.checked = true;
+    for (const a of accordions)
+        a.open = a.id === date_now_id;
 </script>
