@@ -8,17 +8,25 @@
 
 {%- if include.song.youtube -%}
 <div class="yt">
-  <iframe width="650" height="365"
+  {%- if include.song.name -%}
+    {%- assign frame_title = include.song.name | remove: "&shy;" | append: " на YouTube" -%}
+  {%- else -%}
+    {%- assign frame_title = "плеер YouTube" -%}
+  {%- endif -%}
+  <iframe width="650" height="365" title="{{ frame_title }}"
           src="https://www.youtube-nocookie.com/embed/{{ include.song.youtube }}?rel=0&modestbranding=1&iv_load_policy=3"
           frameborder="0"
           allowfullscreen
   ></iframe>
 </div>
-{%- endif -%}
-
-{%- if include.song.soundcloud -%}
+{%- elsif include.song.soundcloud -%}
 <div class="sc">
-  <iframe width="100%" height="20"
+  {%- if include.song.name -%}
+    {%- assign frame_title = include.song.name | remove: "&shy;" | append: " на SoundCloud" -%}
+  {%- else -%}
+    {%- assign frame_title = "плеер SoundCloud" -%}
+  {%- endif -%}
+  <iframe width="100%" height="20" title="{{ frame_title }}"
           src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/{{ include.song.soundcloud }}&color=%23ff5500&inverse=true&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&bg=dark"
           frameborder="0"
   ></iframe>
@@ -29,19 +37,19 @@
 <div class="badge-wrap">
   {%- if include.song.spotify -%}
   <a href="https://open.spotify.com/{{ include.song.spotify }}" target="_blank" rel="noopener noreferrer nofollow">
-    <img alt="{{ include.song.name }} на Spotify" src="/assets/images/spotify.svg" class="badge">
+    <img alt="{{ include.song.name }} на Spotify" height="32" width="32" src="/assets/images/spotify.svg">
   </a>
   {%- endif -%}
 
   {%- if include.song.yandex -%}
   <a href="https://music.yandex.by/{{ include.song.yandex }}" target="_blank" rel="noopener noreferrer nofollow">
-    <img alt="{{ include.song.name }} на Yandex Music" src="/assets/images/yandex_music.svg" class="badge">
+    <img alt="{{ include.song.name }} на Yandex Music" height="40" width="40" src="/assets/images/yandex_music.svg">
   </a>
   {%- endif -%}
 
   {%- if include.song.apple -%}
   <a href="https://music.apple.com/{{ include.song.apple }}" target="_blank" rel="noopener noreferrer nofollow">
-    <img alt="{{ include.song.name }} на Apple Music" src="/assets/images/apple_music.svg" class="badge">
+    <img alt="{{ include.song.name }} на Apple Music" height="32" width="32" src="/assets/images/apple_music.svg">
   </a>
   {%- endif -%}
 </div>

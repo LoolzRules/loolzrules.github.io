@@ -1,5 +1,5 @@
 ---
-image: general_kenobi
+image: null
 songs:
     -
         name: Say It Ain't So

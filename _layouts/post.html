@@ -21,9 +21,13 @@ author_telegram: loolzrules
   <meta name="author" content="@loolzrules">
   <meta property="og:title" content="{{ title }}" />
   {%- if page.image -%}
-    {%- assign year = page.date | date: '%Y' -%}
-    {%- assign month = page.date | date: '%m' -%}
-    {%- capture image -%}/assets/images/posts/{{ year }}/{{ month }}/{{ page.image }}.jpg{%- endcapture -%}
+    {%- if page.collection == "posts" -%}
+      {%- capture image -%}/assets/images/posts/{{ page.image }}.jpg{%- endcapture -%}
+    {%- else -%}
+      {%- assign year = page.date | date: '%Y' -%}
+      {%- assign month = page.date | date: '%m' -%}
+      {%- capture image -%}/assets/images/posts/{{ year }}/{{ month }}/{{ page.image }}.jpg{%- endcapture -%}
+    {%- endif -%}
   {%- else -%}
     {%- assign image = "/assets/images/logo.jpg" -%}
   {%- endif -%}
@@ -54,7 +58,9 @@ author_telegram: loolzrules
     <hr>
     <section id="post">
       {%- if page.image -%}
-        <img src="{{ image }}" alt="{{ performer_name }}" class="cover">
+        <img src="{{ image }}" width="650" height="auto" alt="{{ performer_name }}" class="cover">
+      {%- elsif page.collection == "posts" -%}
+        <img src="https://via.placeholder.com/650x433.jpg" width="650" height="auto" alt="placeholder" class="cover">
       {%- endif -%}
 
       {%- unless page.url == index_page_address -%}

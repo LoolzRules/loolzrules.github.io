@@ -72,7 +72,7 @@ body {
   padding: 0;
 
   #post_date {
-    color: #696969;
+    color: #969696;
     font-size: 11px;
     font-weight: bold;
   }
@@ -118,11 +118,22 @@ body {
 
   .badge-wrap {
     padding: 5px;
-  }
+    display: flex;
+    justify-content: center;
 
-  .badge {
-    height: 40px;
-    margin: 5px;
+    & > a {
+      display: block;
+      margin: 0 8px;
+      padding: 4px;
+
+      &:nth-of-type(2) {
+        padding: 0;
+      }
+
+      & > img {
+        display: block;
+      }
+    }
   }
 
   a.draft {
