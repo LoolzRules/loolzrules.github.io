@@ -1,0 +1,38 @@
+---
+image: lyube
+name: Любэ
+songs:
+    -
+        name: Берёзы
+        youtube: zQyYidgk-0Y
+        spotify: track/5jprMY7LqGHwUCPeBl72fB
+        yandex: album/219830/track/2215106
+        apple: album/%D0%B1%D0%B5%D1%80%D1%91%D0%B7%D1%8B/924947338?i=924947383
+    -
+        name: Ты Неси Меня, Река
+        youtube: XdbeGe76iMA
+        spotify: track/4cZ9z9wixZ0Fc66VUcVjd6
+        yandex: album/5060852/track/39257484
+        apple: album/%D1%82%D1%8B-%D0%BD%D0%B5%D1%81%D0%B8-%D0%BC%D0%B5%D0%BD%D1%8F-%D1%80%D0%B5%D0%BA%D0%B0-%D0%BA%D1%80%D0%B0%D1%81%D0%B0/910449603?i=910449611
+    -
+        name: Главное, Что Есть Ты У Меня
+        youtube: o0-F8o12p7w
+        spotify: track/5oNFN8cHmhBQp4e48f2cyX
+        yandex: album/5698895/track/2216387
+        apple: album/%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%BE%D0%B5-%D1%87%D1%82%D0%BE-%D0%B5%D1%81%D1%82%D1%8C-%D1%82%D1%8B-%D1%83-%D0%BC%D0%B5%D0%BD%D1%8F/910449603?i=910449703
+    -
+        name: Конь
+        youtube: Rxz0LM89VCc
+        spotify: track/5YGlD9W8hwcTrO2fP7vyhl
+        yandex: album/5060850/track/2215069
+        apple: album/%D0%BA%D0%BE%D0%BD%D1%8C/910449603?i=910449668
+    -
+        name: Позови Меня Тихо По Имени
+        youtube: aKLQkdK8UZ8
+        spotify: track/6YsDJacNXzMXIncCnPMvgK
+        yandex: album/5698895/track/2215098
+        apple: album/%D0%BF%D0%BE%D0%B7%D0%BE%D0%B2%D0%B8-%D0%BC%D0%B5%D0%BD%D1%8F-%D1%82%D0%B8%D1%85%D0%BE-%D0%BF%D0%BE-%D0%B8%D0%BC%D0%B5%D0%BD%D0%B8/910449603?i=910449627
+---
+# Пятнично-праздничный
+
+Я знаю что многие (и я в том числе) ждали этого поста. Дождались :)
