@@ -24,6 +24,8 @@ __На репите каждый день__ - это блог, посвящён�
 </details>
 {%- endunless -%}
 
+{%- assign nowunix = "now" | date: "%s" | plus: 0 -%}
+
 {%- assign postsByYear = site.channel | reverse | group_by_exp: "post", "post.date | date: '%Y'" -%}
 {%- for year in postsByYear -%}
     <h3 class="year">{{ year.name }}</h3>
@@ -37,7 +39,10 @@ __На репите каждый день__ - это блог, посвящён�
             <div class="content">
                 <ul>
                     {%- for post in month_items -%}
-                        <li><a href="{{ post.url }}">{{ post.name | default: post.title }}</a></li>
+                        {%- assign posttime = post.date | date: "%s" | plus: 0 -%}
+                        {%- if site.future or posttime < nowunix -%}
+                            <li><a href="{{ post.url }}">{{ post.name | default: post.title }}</a></li>
+                        {%- endif -%}
                     {%- endfor -%}
                 </ul>
             </div>
