@@ -1,3 +1,6 @@
+future: false
+show_drafts: false
+
 theme: jekyll-theme-midnight
 
 plugins:
