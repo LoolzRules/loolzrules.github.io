@@ -1,15 +1,32 @@
 ---
-image: null
+image: galantis
 songs:
     -
-        name: null
-        comment: null
-        youtube: null
-        soundcloud: null
-        spotify: null
-        yandex: null
-        apple: null
+        name: Runaway (U & I)
+        youtube: 5XR7naZ_zZA
+        spotify: track/46lFttIf5hnUZMGvjK0Wxo
+        yandex: album/2788750/track/19934367
+        apple: album/runaway-u-i/984746615?i=984746629
+    -
+        name: No Money
+        youtube: xUVz4nRmxn4
+        spotify: track/0gb1J5UrTpzaU1s3nupgCd
+        yandex: album/4672397/track/28217177
+        apple: album/no-money/1093377456?i=1093377466
+    -
+        name: Love On Me
+        youtube: 8gz9NsNH96Q
+        spotify: track/2MHCiOohBZEQuLgDTPvSzF
+        yandex: album/4672397/track/34174568
+        apple: album/love-on-me/1157820645?i=1157820650
+    -
+        name: Emoji
+        youtube: 9OACLtE_0iE
+        spotify: track/55a4T3yJwr1ZVcKEprSwXC
+        yandex: album/5987732/track/44615837
+        apple: album/emoji/1440215110?i=1440215591
 ---
 # Hello there
 
-General Kenobi
+Сегодня у нас дуэт шведов, имеющих большой опыт в написании хитов (к примеру Toxic и I Love It).
+А ещё у них слегка наркоманские клипы :D
