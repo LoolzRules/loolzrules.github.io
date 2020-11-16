@@ -12,7 +12,7 @@ __На репите каждый день__ - это блог, посвящён�
 ## Архив:
 {% assign num_of_posts = site.posts | size -%}
 {%- unless num_of_posts == 0 -%}
-<details class="accordion">
+<details class="accordion" open>
     <summary>Черновики</summary>
     <div class="content">
         <ul>
@@ -32,8 +32,7 @@ __На репите каждый день__ - это блог, посвящён�
     {%- assign postsByMonth =  year.items | group_by_exp: "post", "post.date | date: '%m'" -%}
     {%- for month in postsByMonth -%}
         {%- assign month_index = month.name | minus: 1 -%}
-        {%- assign accordion_id = year.name | append: "_" | append: month_index -%}
-        <details class="accordion" id="{{ accordion_id }}">
+        <details class="accordion" {% if forloop.first -%}open{%- endif -%}>
             <summary>{{ page.months[month_index] }}</summary>
             {%- assign month_items = month.items | reverse -%}
             <div class="content">
@@ -49,11 +48,3 @@ __На репите каждый день__ - это блог, посвящён�
         </details>
     {%- endfor -%}
 {%- endfor -%}
-
-<script type="application/javascript">
-    const accordions = document.querySelectorAll('.accordion');
-    const now = new Date();
-    const date_now_id = `${now.getFullYear()}_${now.getMonth()}`;
-    for (const a of accordions)
-        a.open = a.id === date_now_id;
-</script>
