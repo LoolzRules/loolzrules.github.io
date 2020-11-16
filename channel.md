@@ -28,11 +28,13 @@ __На репите каждый день__ - это блог, посвящён�
 
 {%- assign postsByYear = site.channel | reverse | group_by_exp: "post", "post.date | date: '%Y'" -%}
 {%- for year in postsByYear -%}
+    {%- assign most_recent_year = forloop.first -%}
     <h3 class="year">{{ year.name }}</h3>
     {%- assign postsByMonth =  year.items | group_by_exp: "post", "post.date | date: '%m'" -%}
     {%- for month in postsByMonth -%}
         {%- assign month_index = month.name | minus: 1 -%}
-        <details class="accordion" {% if forloop.first -%}open{%- endif -%}>
+        {%- assign most_recent_month = forloop.first -%}
+        <details class="accordion" {% if most_recent_year and most_recent_month -%}open{%- endif -%}>
             <summary>{{ page.months[month_index] }}</summary>
             {%- assign month_items = month.items | reverse -%}
             <div class="content">
