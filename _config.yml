@@ -28,15 +28,15 @@ collections:
   channel:
     output: true
     permalink: /:collection/:year/:month/:day/:title/
-  games:
+  js:
     output: true
     permalink: /:collection/:title/
 
 defaults:
   - scope:
-      path: "_games/*"
+      path: "_js/*"
     values:
-      layout: game
+      layout: js
   -
     scope:
       path: "_channel/**/*"
