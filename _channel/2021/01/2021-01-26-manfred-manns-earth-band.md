@@ -1,5 +1,6 @@
 ---
 image: manfred_manns_earth_band
+name: Manfred Mann's Earth Band
 songs:
     -
         name: Don’t Kill It Carol
