@@ -1,5 +1,6 @@
 ---
 image: nochnye_snaipery
+name: Ночные Снайперы
 songs:
     -
         name: Морячок
