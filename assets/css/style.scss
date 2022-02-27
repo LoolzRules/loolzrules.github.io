@@ -173,15 +173,19 @@ body {
     padding: 8px 8px 8px 0;
     margin-bottom: 2px;
 
-    & > ul {
+    & > ol {
+      list-style-type: decimal-leading-zero;
+    }
+
+    & > ul, ol {
       margin-bottom: 0;
+      font-size: 16px;
 
       & > li {
         padding-top: 4px;
         padding-bottom: 4px;
 
         & > a {
-          font-size: 16px;
           display: inline-block;
         }
       }

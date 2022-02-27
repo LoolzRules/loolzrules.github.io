@@ -36,16 +36,16 @@ __На репите каждый день__ - это блог, посвящён�
         {%- assign most_recent_month = forloop.first -%}
         <details class="accordion" {% if most_recent_year and most_recent_month -%}open{%- endif -%}>
             <summary>{{ page.months[month_index] }}</summary>
-            {%- assign month_items = month.items | reverse -%}
+            {%- assign month_items = month.items -%}
             <div class="content">
-                <ul>
+                <ol reversed>
                     {%- for post in month_items -%}
                         {%- assign posttime = post.date | date: "%s" | plus: 0 -%}
                         {%- if site.future or posttime < nowunix -%}
-                            <li><a href="{{ post.url }}">{{ post.name | default: post.title }}</a></li>
+                            <li value="{{ post.date | date: '%d' }}"><a href="{{ post.url }}">{{ post.name | default: post.title }}</a></li>
                         {%- endif -%}
                     {%- endfor -%}
-                </ul>
+                </ol>
             </div>
         </details>
     {%- endfor -%}
